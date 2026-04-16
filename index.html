@@ -6,18 +6,19 @@
     <title>A Message For You</title>
 </head>
 <body>
-    <div class="heart" id="heart-icon">❤️</div>
-    
-    <div class="message-box">
-        <h1 id="main-title">I'm Truly Sorry</h1>
-        <p id="sub-text">
-            I know I messed up, and I hate that it hurt you.<br>
-            You mean the world to me.
-        </p>
+    <div id="container">
+        <div class="heart" id="heart-icon">❤️</div>
         
-        <button id="forgive-btn" onclick="celebrate()">Forgive Me? ✨</button>
+        <div class="message-box">
+            <h1 id="main-title">I'm Truly Sorry</h1>
+            <p id="sub-text">I acted like a bug in a production environment. 🐛<br>Can we deploy a fix together?</p>
+            
+            <div class="btn-group">
+                <button id="forgive-btn" onclick="celebrate()">Yes, I Forgive You ✨</button>
+                <button id="no-btn" onmouseover="moveButton()">Maybe Not</button>
+            </div>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

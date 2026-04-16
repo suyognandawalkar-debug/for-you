@@ -1,54 +1,30 @@
-body {
-    margin: 0;
-    height: 100vh;
+/* Add to your existing CSS */
+.btn-group {
     display: flex;
-    flex-direction: column;
+    gap: 15px;
     justify-content: center;
-    align-items: center;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow: hidden;
+    margin-top: 20px;
+    position: relative;
 }
 
-.heart {
-    font-size: 80px;
-    animation: pulse 1.5s infinite;
-    margin-bottom: 20px;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+#no-btn {
+    background-color: #444;
+    color: #888;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative; /* Important for the moving effect */
 }
 
 #forgive-btn {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+    z-index: 10; /* Keep the Yes button clickable */
 }
 
-#forgive-btn:hover {
-    transform: scale(1.1);
-    background-color: #ff3333;
-}
-
-/* Confetti Particle Style */
-.confetti {
-    position: absolute;
-    font-size: 20px;
-    user-select: none;
-    pointer-events: none;
-    animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+/* Make it look better on phones */
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    p { font-size: 1rem; }
 }

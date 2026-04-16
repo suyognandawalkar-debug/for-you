@@ -8,49 +8,54 @@ function moveButton() {
 }
 
 function celebrate() {
-    const app = document.getElementById('app');
     const title = document.getElementById('main-title');
     const text = document.getElementById('sub-text');
     const heart = document.getElementById('heart-icon');
     const btnGroup = document.querySelector('.btn-group');
 
-    // Add shake effect to the whole container
-    app.classList.add('shake');
-
-    // Change Content with a slight delay
-    setTimeout(() => {
-        title.innerHTML = "I Love You! ❤️";
-        title.style.fontSize = "4rem";
-        text.innerHTML = "Thank you for being so patient with me.<br>I can't wait to see you! 🌹";
-        btnGroup.style.display = 'none';
-        heart.innerText = "💖";
-        heart.style.animation = "pulse 0.4s infinite";
-        
-        // Burst of confetti
-        for (let i = 0; i < 100; i++) {
-            createParticle();
-        }
-    }, 300);
+    title.innerHTML = "I Love You! ❤️";
+    text.innerHTML = "You've made me the happiest person.<br>Can't wait to see your smile! 🌹";
+    btnGroup.style.display = 'none';
+    heart.innerText = "💖";
+    
+    // Create the "Sprinkle" explosion
+    for (let i = 0; i < 100; i++) {
+        createFlower();
+    }
 }
 
-function createParticle() {
-    const particle = document.createElement('div');
-    const emojis = ['❤️', '💖', '✨', '🌹', '🦋'];
-    particle.style.position = 'fixed';
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.top = '-20px';
-    particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
-    particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    particle.style.zIndex = '1000';
-    particle.style.transition = 'transform 3s linear, opacity 3s';
+function createFlower() {
+    const flower = document.createElement('div');
+    const flowers = ['🌸', '🌹', '🌷', '🌻', '🌺', '✨'];
     
-    document.body.appendChild(particle);
+    flower.className = 'flower';
+    flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    
+    // Start from the middle of the screen
+    const startX = window.innerWidth / 2;
+    const startY = window.innerHeight / 2;
+    
+    flower.style.left = startX + 'px';
+    flower.style.top = startY + 'px';
+    
+    document.body.appendChild(flower);
 
-    // Animate falling
-    setTimeout(() => {
-        particle.style.transform = `translateY(110vh) rotate(${Math.random() * 360}deg)`;
-        particle.style.opacity = '0';
-    }, 100);
+    // Random direction and distance
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = Math.random() * 12 + 5;
+    const destinationX = Math.cos(angle) * (Math.random() * 300 + 100);
+    const destinationY = Math.sin(angle) * (Math.random() * 300 + 100);
 
-    setTimeout(() => { particle.remove(); }, 3000);
+    // Animate using Keyframes or JS
+    const animation = flower.animate([
+        { transform: 'translate(0, 0) scale(1) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${destinationX}px, ${destinationY}px) scale(0) rotate(360deg)`, opacity: 0 }
+    ], {
+        duration: Math.random() * 2000 + 1000,
+        easing: 'cubic-bezier(0, .9, .57, 1)',
+        fill: 'forwards'
+    });
+
+    animation.onfinish = () => flower.remove();
 }

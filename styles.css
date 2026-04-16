@@ -6,15 +6,23 @@
 
 body {
     height: 100vh;
+    width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Animated Gradient Background */
+    justify-content: center; /* Horizontal Center */
+    align-items: center;     /* Vertical Center */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 @keyframes gradientBG {
@@ -25,27 +33,26 @@ body {
 
 .message-box {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px); /* Modern Glassmorphism effect */
+    backdrop-filter: blur(15px);
     padding: 40px;
     border-radius: 30px;
     text-align: center;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    max-width: 90%;
+    max-width: 400px; /* Limits width on desktop */
+    width: 85%;      /* Responsive on mobile */
 }
 
 h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: white;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 p {
     color: #f0f0f0;
     font-weight: 300;
-    line-height: 1.6;
     margin-bottom: 30px;
 }
 
@@ -54,24 +61,26 @@ p {
     color: #e73c7e;
     font-weight: 600;
     border: none;
-    padding: 15px 35px;
+    padding: 15px 30px;
     border-radius: 50px;
-    font-size: 1.1rem;
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
 }
 
-#forgive-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+#no-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .heart {
-    font-size: 100px;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+    font-size: 80px;
     animation: pulse 1.5s infinite;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 @keyframes pulse {
@@ -80,14 +89,9 @@ p {
     100% { transform: scale(1); }
 }
 
-/* Screen Shake Effect */
-.shake {
-    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-}
-
-@keyframes shake {
-    10%, 90% { transform: translate3d(-1px, 0, 0); }
-    20%, 80% { transform: translate3d(2px, 0, 0); }
-    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-    40%, 60% { transform: translate3d(4px, 0, 0); }
+/* Sprinkle/Flower Particle */
+.flower {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
 }

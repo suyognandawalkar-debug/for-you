@@ -4,12 +4,13 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 100vh;
-    width: 100vw;
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
     display: flex;
-    justify-content: center; /* Horizontal Center */
-    align-items: center;     /* Vertical Center */
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
@@ -23,75 +24,82 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.heart {
+    font-size: 120px; /* Big heart in the middle */
+    margin-bottom: -20px; /* Pulls the box closer to the heart */
+    z-index: 2;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+    animation: pulse 1.5s infinite;
+    cursor: default;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.message-box {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 50px 30px 40px 30px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.2rem;
+    color: white;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+p {
+    color: white;
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    opacity: 0.9;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#forgive-btn {
+    background: white;
+    color: #e73c7e;
+    font-weight: 600;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#no-btn {
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 16px 24px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
-
-.message-box {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    padding: 40px;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    max-width: 400px; /* Limits width on desktop */
-    width: 85%;      /* Responsive on mobile */
-}
-
-h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: white;
-    margin-bottom: 10px;
-}
-
-p {
-    color: #f0f0f0;
-    font-weight: 300;
-    margin-bottom: 30px;
-}
-
-#forgive-btn {
-    background: #ffffff;
-    color: #e73c7e;
-    font-weight: 600;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-#no-btn {
-    background: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 15px 25px;
-    border-radius: 50px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.heart {
-    font-size: 80px;
-    animation: pulse 1.5s infinite;
-    margin-bottom: 20px;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* Sprinkle/Flower Particle */
-.flower {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
 }
